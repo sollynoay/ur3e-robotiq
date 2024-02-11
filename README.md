@@ -40,12 +40,13 @@ python ./tool_test.py
 ```
 roslaunch robotiq_2f_gripper_control test_85mm_gripper_new.launch
 ```
-It can now listen to the command to open or close the gripper. For instance, you can run,
+It can now listen to the command to open or close the gripper. For instance, you can run as an example,
 ```
 rosrun robotiq_2f_gripper_control robotiq_2f_action_close.py 
 ```
 # MoveIt setup
-MoveIt config is generated in ./src/moveit_test
+MoveIt config is generated in ./src/moveit_test  
+After starting UR3e and ROBOTIQ, run the following command to start move_group
 ```
 roslaunch moveit_test move_group.launch
 ```
@@ -54,7 +55,6 @@ For visualization
 ```
 roslaunch moveit_test moveit_rviz.launch
 ```
-
 # MoveIt python interface
 ```
 rosrun moveit_python_interface move.py
