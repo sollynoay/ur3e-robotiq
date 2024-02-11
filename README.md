@@ -22,4 +22,7 @@ roslaunch ur_calibration calibration_correction.launch robot_ip:=192.168.0.179 t
 ```
 roslaunch ur_robot_driver ur3e_bringup.launch robot_ip:=192.168.0.179 kinematics_config:="${HOME}/my_robot_calibration.yaml"
 ```
+## Setup on UR3e teaching panel
+Now, it is necessary to add external control to program in the teaching panel of UR robot. The external control is possible by installing URCap to teaching panel, externalcontrol-1.0.5.urcap. To start it, you need to add external control to program tree in the teaching panel and run it. Then, you can control the robot arm with MoveIt.
+
 
