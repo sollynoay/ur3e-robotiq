@@ -60,6 +60,26 @@ roslaunch moveit_test moveit_rviz.launch
 rosrun moveit_python_interface move.py
 ```
 
+# UR3e without MoveIt
+You can also directly send commands to UR3e without using MoveIt.
+```
+rosrun ur_robot_driver test_move
+```
+You have several controllers to choose:
+```
+Available trajectory controllers:
+0 (joint-based): scaled_pos_joint_traj_controller
+1 (joint-based): scaled_vel_joint_traj_controller
+2 (joint-based): pos_joint_traj_controller
+3 (joint-based): vel_joint_traj_controller
+4 (joint-based): forward_joint_traj_controller
+5 (Cartesian): pose_based_cartesian_traj_controller
+6 (Cartesian): joint_based_cartesian_traj_controller
+7 (Cartesian): forward_cartesian_traj_controller
+Please choose a controller by entering its number (Enter '0' if you are unsure / don't care): 0
+```
+
+
 
 
 
