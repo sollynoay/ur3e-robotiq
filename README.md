@@ -78,7 +78,7 @@ Available trajectory controllers:
 7 (Cartesian): forward_cartesian_traj_controller
 Please choose a controller by entering its number (Enter '0' if you are unsure / don't care): 0
 ```
-
+Note that in ur3e_bringup.launch, scaled_pos_joint_traj_controller is started by default. 
 
 
 
