@@ -25,4 +25,27 @@ roslaunch ur_robot_driver ur3e_bringup.launch robot_ip:=192.168.0.179 kinematics
 ## Setup on UR3e teaching panel
 Now, it is necessary to add external control to program in the teaching panel of UR robot. The external control is possible by installing URCap to teaching panel, externalcontrol-1.0.5.urcap. To start it, you need to add external control to program tree in the teaching panel and run it. Then, you can control the robot arm with MoveIt.
 
+# ROBOTIQ setup
+To connect the gripper to PC, it is also necessary to install URCap to UR3e teaching panel, rs485-1.0.urcap. Note: after installing rs485-1.0.urcap, it is necessary to uninstall the previous Robotiq urcap. This means robotiq can no longer be controlled by the teaching panel. To begin with, map the /dev/ttyTool in UR control box to your PC.  
+To make sure you have permission to connect from PC,
+```
+sudo chmod -R 777 /dev
+```
+Then, map /dev/ttyTool to your PC  
+```
+roscore
+python ./tool_test.py
+```
+## Start the service
+```
+roslaunch robotiq_2f_gripper_control test_85mm_gripper_new.launch
+```
+It can now listen to the command to open or close the gripper. For instance, you can run,
+```
+rosrun robotiq_2f_gripper_control robotiq_2f_action_close.py 
+```
+
+
+
+
 
