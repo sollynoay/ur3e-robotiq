@@ -1,6 +1,6 @@
 # Download the project
 ```
-git clone git@github.com:sollynoay/ur3e-robotiq.git
+git clone https://github.com/sollynoay/ur3e-robotiq.git
 cd src
 git clone https://github.com/sollynoay/universal_robot.git
 git clone https://github.com/sollynoay/Universal_Robots_ROS_Driver.git
