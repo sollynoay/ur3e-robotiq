@@ -1,4 +1,4 @@
-# Repository for ROS setup for real ur3e arm and robotiq gripper
+This repository is for ROS setup for real ur3e arm and robotiq gripper
 ## Download the project
 ```
 git clone https://github.com/sollynoay/ur3e-robotiq.git
