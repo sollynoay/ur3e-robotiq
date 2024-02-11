@@ -18,7 +18,7 @@ If this is the first time or the calibration file cannot be found, run the follo
 ```
 roslaunch ur_calibration calibration_correction.launch robot_ip:=192.168.0.179 target_filename:="${HOME}/my_robot_calibration.yaml"
 ```
-## Start
+## Start Service
 ```
 roslaunch ur_robot_driver ur3e_bringup.launch robot_ip:=192.168.0.179 kinematics_config:="${HOME}/my_robot_calibration.yaml"
 ```
