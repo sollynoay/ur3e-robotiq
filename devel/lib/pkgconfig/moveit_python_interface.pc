@@ -1,0 +1,8 @@
+prefix=/home/robot/ur3e-robotiq/devel
+
+Name: moveit_python_interface
+Description: Description of moveit_python_interface
+Version: 0.3.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

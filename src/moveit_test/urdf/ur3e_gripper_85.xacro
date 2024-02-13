@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="ur_robot"> 
+  <!--
+    Convenience wrapper for the 'ur_robot' macro which provides default values
+    for the various "parameters files" parameters for a UR3e.
+
+    This file can be used when composing a more complex scene with one or more
+    UR3e robots.
+
+    While the generic 'ur_robot' macro could also be used, it would require
+    the user to provide values for all parameters, as that macro does not set
+    any model-specific defaults (not even for the generic parameters, such as
+    the visual and physical parameters and joint limits).
+
+    Refer to the main 'ur_macro.xacro' in this package for information about
+    use, contributors and limitations.
+
+    NOTE: users will most likely want to override *at least* the
+          'kinematics_parameters_file' parameter. Otherwise, a default kinematic
+          model will be used, which will almost certainly not correspond to any
+          real robot.
+  -->
+  
+  <xacro:include filename="$(find ur_description)/urdf/inc/ur_macro.xacro"/>
+
+  <!--Declare arguments -->
+  <xacro:arg name="joint_limit_params" default="$(find ur_description)/config/ur3e/joint_limits.yaml"/>
+  <xacro:arg name="physical_params" default="$(find ur_description)/config/ur3e/physical_parameters.yaml"/>
+  <xacro:arg name="kinematics_params" default="$(find ur_description)/config/ur3e/default_kinematics.yaml"/>
+  <xacro:arg name="visual_params" default="$(find ur_description)/config/ur3e/visual_parameters.yaml"/>
+  <!--
+    legal values:
+      - hardware_interface/PositionJointInterface
+      - hardware_interface/VelocityJointInterface
+      - hardware_interface/EffortJointInterface
+    NOTE: this value must correspond to the controller configured in the
+          controller .yaml files in the 'config' directory.
+  -->
+  <xacro:arg name="transmission_hw_interface" default="hardware_interface/PositionJointInterface"/>
+  <xacro:arg name="safety_limits" default="false"/>
+  <xacro:arg name="safety_pos_margin" default="0.15"/>
+  <xacro:arg name="safety_k_position" default="20"/>
+
+  <!-- Instantiate the Gazebo robot and pass it all the required arguments. -->
+  <xacro:ur_robot
+    prefix=""
+    joint_limits_parameters_file="$(arg joint_limit_params)"
+    kinematics_parameters_file="$(arg kinematics_params)"
+    physical_parameters_file="$(arg physical_params)"
+    visual_parameters_file="$(arg visual_params)"
+    transmission_hw_interface="$(arg transmission_hw_interface)"
+    safety_limits="$(arg safety_limits)"
+    safety_pos_margin="$(arg safety_pos_margin)"
+    safety_k_position="$(arg safety_k_position)"
+  />
+  <xacro:include filename="$(find robotiq_2f_85_gripper_visualization)/urdf/robotiq_arg2f_85_model_macro.xacro" />
+  <xacro:robotiq_arg2f_85 prefix="" transmission_hw_interface="$(arg transmission_hw_interface)" parent_link="tool0"/>
+</robot>

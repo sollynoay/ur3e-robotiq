@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/robot/ur3e-robotiq/install/setup.sh
