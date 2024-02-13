@@ -100,11 +100,6 @@ CMake Error at CMakeLists.txt:1:
   "/opt/ros/noetic/share/catkin/cmake/toplevel.cmake"
 ```
 Delete the CMakeList in src. 
-### Problem 2
-```
- Could NOT find moveit_core (missing: moveit_core_DIR)
-```
-moveit_core not installed. This is quite large.
 
 
 
