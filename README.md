@@ -81,15 +81,18 @@ Please choose a controller by entering its number (Enter '0' if you are unsure /
 Note that in ur3e_bringup.launch, scaled_pos_joint_traj_controller is started by default. 
 
 # Trouble Shooting
+### Problem 1
 ```
 CMake Error at CMakeLists.txt:1:
   Parse error.  Expected a command name, got unquoted argument with text
   "/opt/ros/noetic/share/catkin/cmake/toplevel.cmake"
 ```
-Delete the CMakeList in src.  
+Delete the CMakeList in src. 
+### Problem 2
 ```
  Could NOT find moveit_core (missing: moveit_core_DIR)
 ```
+moveit_core not installed. This is quite large.
 
 
 
