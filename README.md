@@ -14,6 +14,12 @@ robotiq requires modbus. Current code requries a lower version of pymodbus.
 ```
 pip install pymodbus==2.5.3
 ```
+## Universal robot
+To build universal robot library from source, install dependencies as follows. 
+```
+rosdep update
+rosdep install --rosdistro $ROS_DISTRO --ignore-src --from-paths src
+```
 # UR3e Setup
 Here, controlling UR3e by ROS is explained. UR3e can be connected to PC via ethernet.  
 ## ip and mask for PC and UR3e control box
