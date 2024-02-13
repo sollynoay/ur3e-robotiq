@@ -8,6 +8,12 @@ git clone https://github.com/sollynoay/universal_robot.git
 git clone https://github.com/sollynoay/Universal_Robots_ROS_Driver.git
 git clone https://github.com/sollynoay/robotiq_2finger_grippers.git
 ```
+# Install
+## ROBOTIQ
+robotiq requires modbus. Current code requries a lower version of pymodbus. 
+```
+pip install pymodbus==2.5.3
+```
 # UR3e Setup
 Here, controlling UR3e by ROS is explained. UR3e can be connected to PC via ethernet.  
 ## ip and mask for PC and UR3e control box
