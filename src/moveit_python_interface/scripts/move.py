@@ -14,9 +14,7 @@ import numpy as np
 import tf.transformations as tr
 
 import roslib
-roslib.load_manifest("ur_kinematics")
-#from ur_kin_py import forward, inverse
-from ur_kinematics.ur_kin_py import forward, inverse
+
 
 # Brings in the SimpleActionClient
 import actionlib
@@ -39,22 +37,7 @@ from std_msgs.msg import String
 from moveit_commander.conversions import pose_to_list
 
 
-def best_sol(sols, q_guess, weights):
-    valid_sols = []
-    for sol in sols:
-        test_sol = np.ones(6)*9999.
-        for i in range(6):
-            for add_ang in [-2.*np.pi, 0, 2.*np.pi]:
-                test_ang = sol[i] + add_ang
-                if (abs(test_ang) <= 2.*np.pi and 
-                    abs(test_ang - q_guess[i]) < abs(test_sol[i] - q_guess[i])):
-                    test_sol[i] = test_ang
-        if np.all(test_sol != 9999.):
-            valid_sols.append(test_sol)
-    if len(valid_sols) == 0:
-        return None
-    best_sol_ind = np.argmin(np.sum((weights*(valid_sols - np.array(q_guess)))**2,1))
-    return valid_sols[best_sol_ind]
+
 
 def open_gripper():
 
@@ -630,25 +613,7 @@ class MoveGroupPythonInterfaceTutorial(object):
         q=np.array([-265.32/180*np.pi,-106.61/180*np.pi,-98.46/180*np.pi,
                     -61.64/180*np.pi,89.64/180*np.pi,91.76/180*np.pi])
         
-       
-        sols = inverse(np.array(A1), float(q[5]))
 
-        qsol = best_sol(sols, q, [1.]*6)
-        if qsol is None:
-            qsol = [999.]*6
-
-        print(qsol/3.14159*180)
-
-        joint_goal = move_group.get_current_joint_values()
-
-
-
-        joint_goal[0] = qsol[0] # base
-        joint_goal[1] = qsol[1]       # shoulder
-        joint_goal[2] = qsol[2]   # elbow
-        joint_goal[3] = qsol[3]         # wrist 1
-        joint_goal[4] = qsol[4]          # wrist 2
-        joint_goal[5] = qsol[5]
         
         #if qsol[0]>-360 and qsol[0]<360:
         #    move_group.go(joint_goal, wait=True)
@@ -1006,10 +971,10 @@ def main():
         #tutorial.execute_plan(cartesian_plan)
 
         input("============ Press `Enter` to plan and display a Cartesian path ...")
-        cartesian_plan = tutorial.plan_cartesian_path_goal() #, fraction 
+        #cartesian_plan = tutorial.plan_cartesian_path_goal() #, fraction 
 
         input("============ Press `Enter` to execute a saved path ...")
-        tutorial.execute_plan(cartesian_plan[1])
+        #tutorial.execute_plan(cartesian_plan[1])
         #tutorial.execute_plan(cartesian_plan)
      
         input("============ grasp...")
